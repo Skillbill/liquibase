@@ -6,8 +6,12 @@ WORKDIR /usr/src/myapp
 RUN  wget $LIQUIBASE_JAR -O liquibase.jar
 COPY ./liquibase .
 COPY ./docker-entrypoint.sh .
-
+COPY ./waitdb .
 COPY ./lib ./lib
+COPY WaitDB.java .
+
+RUN javac WaitDB.java
+RUN mv WaitDB.class ./lib/
 
 VOLUME drivers
 

@@ -25,5 +25,6 @@ if [[ -n "$LIQUIBASE_PASSWORD" ]]; then
     echo "password: ${LIQUIBASE_PASSWORD}" >> /liquibase.properties
 fi
 
-exec ./liquibase $LIQUIBASE_OPTS "$@"
+./waitdb $LIQUIBASE_OPTS
 
+exec ./liquibase $LIQUIBASE_OPTS "$@"

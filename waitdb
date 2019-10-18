@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+if [ ! -n "${WAITDB_HOME+x}" ]; then
+   echo "WAITDB_HOME is not set."
+
+  ## resolve links - $0 may be a symlink
+  PRG="$0"
+  while [ -h "$PRG" ] ; do
+    ls=`ls -ld "$PRG"`
+    link=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$link" : '/.*' > /dev/null; then
+    PRG="$link"
+    else
+    PRG=`dirname "$PRG"`"/$link"
+    fi
+  done
+
+
+  WAITDB_HOME=`dirname "$PRG"`
+
+  # make it fully qualified
+  WAITDB_HOME=`cd "$WAITDB_HOME" && pwd`
+   echo "Waitdb Home: $WAITDB_HOME"
+fi
+
+ 
+# build classpath from all jars in lib
+if [ -f /usr/bin/cygpath ]; then
+  CP=.
+  for i in "$WAITDB_HOME"/lib/*.jar; do
+    i=`cygpath --windows "$i"`
+    CP="$CP;$i"
+  done
+else
+  if [[ $(uname) = MINGW* ]]; then
+    CP_SEPARATOR=";"
+  else
+    CP_SEPARATOR=":"
+  fi
+  CP=.
+  CP="$CP""$CP_SEPARATOR""$WAITDB_HOME/lib/"
+  for i in "$WAITDB_HOME"/lib/*.jar; do
+    CP="$CP""$CP_SEPARATOR""$i"
+  done
+fi
+
+# add any JVM options here
+JAVA_OPTS="${JAVA_OPTS-}"
+
+echo $CP
+echo $JAVA_OPTS
+
+java -cp "$CP" $JAVA_OPTS WaitDB ${1+"$@"}
+
+
