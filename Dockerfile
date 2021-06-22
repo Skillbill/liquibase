@@ -13,7 +13,7 @@ COPY WaitDB.java .
 RUN javac WaitDB.java
 RUN mv WaitDB.class ./lib/
 
-VOLUME drivers
+VOLUME /drivers
 
 ENV LIQUIBASE_URL="" \
     LIQUIBASE_USERNAME="" \
