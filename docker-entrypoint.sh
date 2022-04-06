@@ -9,7 +9,7 @@ cp /drivers/*.jar ./lib
 
 env
 
-LIQUIBASE_OPTS="--changeLogFile=/liquibase.yml --defaultsFile=/liquibase.properties"
+LIQUIBASE_OPTS="--changeLogFile=./changeset/liquibase.yml --defaultsFile=/liquibase.properties"
 
 echo -n > /liquibase.properties
 
