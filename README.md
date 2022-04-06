@@ -20,7 +20,7 @@ put all the changeset into the folder changeset. The root file is liquibase.yml.
 The root file can contain one or more changeset (as for the single file version) or the include directive to include how many file you want.
 The run.
 
-docker run -it -v `pwd`:/drivers  -v $PWD/changeset:/usr/src/myapp/changeset --link some-postgres:postgres -e "LIQUIBASE_URL=jdbc:postgresql://postgres/dbpsql" -e "LIQUIBASE_USERNAME=dbpsql" -e "LIQUIBASE_PASSWORD=dbpsql"  skillbillsrl/liquibase update
+docker run -it -v `pwd`:/drivers  -v $PWD/changeset:/usr/src/myapp/changeset --link some-postgres:postgres -e "LIQUIBASE_URL=jdbc:postgresql://postgres/dbpsql" -e "LIQUIBASE_USERNAME=dbpsql" -e "LIQUIBASE_PASSWORD=dbpsql"  skillbillsrl/liquibase:multifiles update
 
 ## NOTES
 
