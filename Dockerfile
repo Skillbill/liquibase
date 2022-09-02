@@ -1,8 +1,6 @@
 FROM openjdk:8
 
-ENV LIQUIBASE_JAR https://github.com/liquibase/liquibase/releases/download/liquibase-parent-3.6.1/liquibase-3.6.1.jar
-
-#ENV LIQUIBASE_JAR https://github.com/liquibase/liquibase/releases/download/v4.15.0/liquibase-core-4.15.0.jar
+ENV LIQUIBASE_JAR https://github.com/liquibase/liquibase/releases/download/v4.15.0/liquibase-core-4.15.0.jar
 
 WORKDIR /usr/src/myapp
 RUN  wget $LIQUIBASE_JAR -O liquibase.jar
