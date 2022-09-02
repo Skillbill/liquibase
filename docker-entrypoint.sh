@@ -36,5 +36,3 @@ echo "LIQUIBASE_OPTS: $LIQUIBASE_OPTS"
 ./liquibase $LIQUIBASE_OPTS "$@"
 
 
-echo "log: "
-cat liquibase.log
