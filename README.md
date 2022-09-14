@@ -12,7 +12,7 @@ Precondition is that there is another docker image running postgres named some-p
 
 put all the changeset into the file liquibase.yml and run
 
-> docker run  -v `pwd`:/drivers  -v $PWD/liquibase.yml:/usr/src/myapp/liquibase.yml  --link some-postgres:postgres -e "LIQUIBASE_URL=jdbc:postgresql://postgres/dbpsql" -e "LIQUIBASE_USERNAME=dbpsql" -e "LIQUIBASE_PASSWORD=dbpsql"  skillbillsrl/liquibase  update
+> docker run  -v `pwd`:/drivers  -v $PWD/liquibase.yml:/liquibase.yml  --link some-postgres:postgres -e "LIQUIBASE_URL=jdbc:postgresql://postgres/dbpsql" -e "LIQUIBASE_USERNAME=dbpsql" -e "LIQUIBASE_PASSWORD=dbpsql"  skillbillsrl/liquibase  update
 
 
 ### multi files
